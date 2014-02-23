@@ -196,6 +196,11 @@ class ServerState(TS3.ClientEventHandler):
 		if self.is_channel_factory(newChannelID):
 			self.create_channel_for_user(clientID, newChannelID)
 
+	def onClientMoveMovedEvent(self, connection, clientID, newChannelID, **kwargs):
+		self.delete_empty_channels()
+		if self.is_channel_factory(newChannelID):
+			self.create_channel_for_user(clientID, newChannelID)
+
 	def onTextMessageEvent(self, connection, targetMode, toID, fromID, fromName, fromUniqueIdentifier, message, ffIgnored, **kwargs):
 		if message == "!test":
 			print TS3.ConnectStatus.STATUS_CONNECTION_ESTABLISHED
