@@ -129,7 +129,6 @@ class ServerState(TS3.ClientEventHandler):
 
 	def channel_exists(self, name):
 		for channel in Channel.get_all_channels(self.connection):
-			print repr(channel.get_name()), repr(name)
 			if channel.get_name() == name:
 				return True
 		return False
